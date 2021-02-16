@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-ngnix-deployment
+  labels:
+    app: my-first-app
+spec:
+  selector:
+    matchLabels:
+      app: my-first-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: my-first-app
+    spec:
+      containers:
+      - name: my-first-app
+        image: nginx:1.16
+        ports:
+        - containerPort: 80
